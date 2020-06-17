@@ -1,0 +1,37 @@
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <bits/stdc++.h>
+#include <algorithm>
+using namespace std;
+
+int firstRecurring(int *nums, int Numofnums) 
+{
+    map<int, bool> m;
+    for(int i = 0; i < Numofnums; i++)
+    {
+        if(m.find(nums[i]) != m.end())
+        {
+            m[nums[i]] = true;
+            return nums[i];
+        }
+        else
+            m[nums[i]] = false;
+    }
+    return -1;
+}
+int main() 
+{
+ //   int arr[] = {1,2,3,4,5,6,4,5,2,3,4};
+    int arr[] = {2,5,1,2,3,5,1,2,4};
+    int Numofnums = 0;
+    if(arr != NULL)
+        Numofnums = sizeof(arr) / sizeof(arr[0]);
+    else
+    {
+        cout<<"There is no member in this array";
+        return 0;
+    }
+    cout<< firstRecurring(arr, Numofnums);
+    return 0;
+}
